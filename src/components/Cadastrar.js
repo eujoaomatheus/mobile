@@ -19,6 +19,10 @@ const Cadastro = () => {
         navigation.navigate('Login');
     }
 
+    const retornarTelaContatos = () => {
+        navigation.navigate('Contato')
+    }
+
 
     return (
 

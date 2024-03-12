@@ -37,6 +37,7 @@ const EditarContato = (props) => {
                 if(response.status === 200){
                     setMensagem(`Contato alterado com sucesso ${name} ${phone}`)
                     setShowNotification(true);
+                    listaContato()
                 }
             }).catch(error => {
                 console.warn(error)

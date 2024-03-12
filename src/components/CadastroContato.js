@@ -84,7 +84,7 @@ const CadastroContato = () => {
                     style={styles.button}
                     onPress={() => salvarContato()}
                     >
-                        <Text style={styles.buttonText}>Salvar</Text>
+                        <Text style={styles.buttonText} onPress={retornarTelaContatos()}>Salvar</Text>
                     </TouchableOpacity>
                     
                 </View>
