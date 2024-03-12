@@ -1,1 +1,1 @@
-json-server --watch ./DadosApi/db.json
+json-server --watch ./API/db.json

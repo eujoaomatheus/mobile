@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, } from 'react-native';
 import { ListItem, Avatar, Icon, } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-import ApiContato from '../Api/ApiContato';
+import ApiContato from '../API/BackContatos';
 
 
 

@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-nativ
 import { Icon, } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import ApiContato from '../Api/ApiContato';
+import ApiContato from '../API/BackContatos';
 
 
 
