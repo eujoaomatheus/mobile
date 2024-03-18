@@ -61,7 +61,7 @@ const CadastroContato = () => {
                         style={styles.input}
                         placeholder="Nome"
                         value={nome}
-                        onChangeText={setNome}
+                      //  onChangeText={setNome}
 
                     />
                     <Text style={styles.title}>Email</Text>
@@ -76,7 +76,7 @@ const CadastroContato = () => {
                         style={styles.input}
                         placeholder="Telefone"
                         value={telefone}
-                        onChangeText={setTelefone}
+                      //  onChangeText={setTelefone}
 
 
                     />

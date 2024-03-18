@@ -3,35 +3,35 @@ import { Icon, } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { app } from '../../firebase';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
-
+import { useState } from 'react';
 
 
 
 
 const auth = getAuth(app);
 
-const testeLogin = () => {
 
-    createUserWithEmailAndPassword(auth, "teste@gmail.com", "testePassword")
+
+const testeLogin = (email, senha) => {
+    
+
+    createUserWithEmailAndPassword(auth, email, senha)
         .then((userCredential) => {
-            // Signed in
             const user = userCredential.user;
             console.log("Passou")
-            // ...
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorMessage)
-            // ..
         });
 
 }
 
 const Cadastro = () => {
 
-
+    const [senha, setSenha] = useState("")
+    const [email, setEmail] = useState("")
 
 
     const navigation = useNavigation();
@@ -79,6 +79,9 @@ const Cadastro = () => {
                     <TextInput
                         style={styles.input}
                         placeholder="Email"
+                        value={email}
+                        onChangeText={setEmail}
+
 
 
                     />
@@ -86,11 +89,13 @@ const Cadastro = () => {
                     <TextInput
                         style={styles.input}
                         placeholder="Senha"
+                        value={senha}
+                        onChangeText={setSenha}
 
                         secureTextEntry
                     />
                     <TouchableOpacity style={styles.button}>
-                        <Text style={styles.buttonText} onPress={testeLogin()}>Salvar</Text>
+                        <Text style={styles.buttonText} onPress={testeLogin(email, senha)}>Salvar</Text>
                     </TouchableOpacity>
 
                 </View>
