@@ -1,19 +1,49 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation} from '@react-navigation/native';
-import { Avatar , Input} from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
+import { Avatar, Input } from 'react-native-elements';
+import { app } from '../../firebase';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 
 
 
 
 const LoginScreen = () => {
- 
-    const navigation = useNavigation();
 
+  const [senha, setSenha] = useState(null)
+  const [email, setEmail] = useState(null)
+
+  const navigation = useNavigation();
+
+  const auth = getAuth(app);
+
+  const loginFirebase = () => {
+
+    signInWithEmailAndPassword(auth, email, senha)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log("Passou")
+        navigation.navigate('Contato');
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage)
+      });
+
+
+  }
+
+
+
+  const login = (email, senha) => {
     
-
-  const login = () => {
-    navigation.navigate('Contato');
+    l
+  
+  //  
   };
 
   const cadastrar = () => {
@@ -22,27 +52,30 @@ const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
-        <Avatar
-          rounded
-          source={{
-            uri:
-              'https://cdn-icons-png.flaticon.com/128/711/711769.png',
-          }}
-        />
+      <Avatar
+        rounded
+        source={{
+          uri:
+            'https://cdn-icons-png.flaticon.com/128/711/711769.png',
+        }}
+      />
       <Text style={styles.title}>Login</Text>
       <TextInput
         style={styles.input}
         placeholder="Login"
-        
-        
+        value={email}
+        onChangeText={setEmail}
+
       />
       <TextInput
         style={styles.input}
         placeholder="Senha"
-        
+        value={senha}
+        onChangeText={setSenha}
+
         secureTextEntry
       />
-      <TouchableOpacity style={styles.button} onPress={login}>
+      <TouchableOpacity style={styles.button} onPress={loginFirebase(email, senha)}>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.button, styles.signupButton]} onPress={cadastrar}>
