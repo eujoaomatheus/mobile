@@ -1,11 +1,33 @@
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import { Icon, } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
+import { app } from '../../firebase';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 
 
 
 
+
+const auth = getAuth(app);
+
+const testeLogin = () => {
+
+    createUserWithEmailAndPassword(auth, "teste@gmail.com", "testePassword")
+        .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log("Passou")
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage)
+            // ..
+        });
+
+}
 
 const Cadastro = () => {
 
@@ -68,7 +90,7 @@ const Cadastro = () => {
                         secureTextEntry
                     />
                     <TouchableOpacity style={styles.button}>
-                        <Text style={styles.buttonText}>Salvar</Text>
+                        <Text style={styles.buttonText} onPress={testeLogin()}>Salvar</Text>
                     </TouchableOpacity>
 
                 </View>
