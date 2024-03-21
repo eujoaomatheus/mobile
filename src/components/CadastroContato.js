@@ -15,7 +15,6 @@ const CadastroContato = () => {
 
 
     const [nome, setNome] = useState("")
-    const [email, setEmail] = useState()
     const [telefone, setTelefone] = useState("")
 
 
@@ -83,9 +82,9 @@ const CadastroContato = () => {
                     />
                     <TouchableOpacity 
                     style={styles.button}
-                    onPress={() => salvarContato()}
+                    onPress={() => salvarContato}
                     >
-                        <Text style={styles.buttonText} onPress={retornarTelaContatos()}>Salvar</Text>
+                        <Text style={styles.buttonText} onPress={listaContato()}>Salvar</Text>
                     </TouchableOpacity>
                     
                 </View>
@@ -161,4 +160,4 @@ const styles = StyleSheet.create({
 });
 
 export default CadastroContato;
-
+    

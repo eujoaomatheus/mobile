@@ -25,20 +25,17 @@ const Contato = () => {
 
     }
 
-
     useEffect(()=>{
-
         console.log("use Effect Chamado")
         ApiContato.getContato()
         .then(response => {
-            console.log(response.status);
             setList(response.data)
         }).catch(error =>{
             console.warn(error);
         })
 
        
-    })
+    }, [])
 
 
 

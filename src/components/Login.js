@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Easing } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Avatar, Input } from 'react-native-elements';
 import { app } from '../../firebase';
@@ -11,14 +11,17 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginScreen = () => {
 
-  const [senha, setSenha] = useState(null)
-  const [email, setEmail] = useState(null)
+  const [senha, setSenha] = useState("")
+  const [email, setEmail] = useState("")
 
   const navigation = useNavigation();
 
   const auth = getAuth(app);
 
   const loginFirebase = () => {
+
+    console.log(senha, email)
+  
 
     signInWithEmailAndPassword(auth, email, senha)
       .then((userCredential) => {
@@ -37,14 +40,6 @@ const LoginScreen = () => {
 
   }
 
-
-
-  const login = (email, senha) => {
-    
-    l
-  
-  //  
-  };
 
   const cadastrar = () => {
     navigation.navigate('Cadastro');
@@ -75,7 +70,8 @@ const LoginScreen = () => {
 
         secureTextEntry
       />
-      <TouchableOpacity style={styles.button} onPress={loginFirebase(email, senha)}>
+      
+      <TouchableOpacity style={styles.button} onPress={loginFirebase}>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.button, styles.signupButton]} onPress={cadastrar}>

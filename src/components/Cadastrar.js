@@ -12,26 +12,29 @@ const auth = getAuth(app);
 
 
 
-const testeLogin = (email, senha) => {
-    
 
-    createUserWithEmailAndPassword(auth, email, senha)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            console.log("Passou")
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorMessage)
-        });
-
-}
 
 const Cadastro = () => {
 
     const [senha, setSenha] = useState("")
     const [email, setEmail] = useState("")
+
+
+    const testeLogin = () => {
+    
+
+        createUserWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log("Passou")
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage)
+            });
+    
+    }
 
 
     const navigation = useNavigation();
@@ -95,7 +98,7 @@ const Cadastro = () => {
                         secureTextEntry
                     />
                     <TouchableOpacity style={styles.button}>
-                        <Text style={styles.buttonText} onPress={testeLogin(email, senha)}>Salvar</Text>
+                        <Text style={styles.buttonText} onPress={testeLogin}>Salvar</Text>
                     </TouchableOpacity>
 
                 </View>
